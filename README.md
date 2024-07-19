@@ -57,3 +57,11 @@ Run the following command to start the container:
 ```
 docker run --rm -it --device /dev/kvm openwrt-docker
 ```
+
+Initial setting to establish the internet connectin.
+```
+uci set network.lan.ifname='eth0'
+uci set network.lan.proto='dhcp'
+uci commit network
+/etc/init.d/network restart
+```
