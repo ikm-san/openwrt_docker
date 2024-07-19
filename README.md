@@ -55,7 +55,7 @@ Step 4: Run the Docker Container
 Run the following command to start the container:
 
 ```
-docker run --rm -it --device /dev/kvm openwrt-docker
+docker run --rm -it --device /dev/kvm -p 8080:80 openwrt-docker
 ```
 
 Initial setting to establish the internet connectin.
@@ -65,3 +65,10 @@ uci set network.lan.proto='dhcp'
 uci commit network
 /etc/init.d/network restart
 ```
+
+IP address?
+```
+docker ps
+docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' image#
+```
+
